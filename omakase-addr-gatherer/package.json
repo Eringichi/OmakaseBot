@@ -1,0 +1,22 @@
+{
+  "name": "omakase-addr-gatherer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.121.0",
+    "aws-sdk": "^2.1167.0",
+    "discord-interactions": "^3.2.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "node-fetch": "^3.2.6",
+    "nodemon": "^2.0.18"
+  }
+}

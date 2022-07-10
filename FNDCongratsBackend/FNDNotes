@@ -1,0 +1,133 @@
+{
+  creators(where: {id_in: ["0x6d990e9205bf14b57fb7c71b9fa0bdc707ad756e", "0xf742dcc971869092093019f13846f1aa6cfa93da", "0xe0097af4e600e37ce07c58e2a1100b4b6a73fd57", "0x83887670a0ca60da02c4e782a99c721bcc241316", "0x5aa99d6fb11efff22be677f276cb5b880dce2080", "0xdee3c93a44c2fa6febc9ffaaf359a3f3f83f56ee", "0xc619e0891c6262c03b41c666002cff471cb5c249", "0x39a0b384cd90e72f58203fd3804b4bf7f30f85ee", "0x26aeab9bc6630bf8e155770ab314ec5f8169edb5", "0x9a94f94626352566e0a9105f1e3da0439e3e3783", "0xdeb2c6bb895d46123e69043cf41b694deb7f0f2d", "0xc395b609bb4690dee3453c2cd338f4e8ed6aae4a", "0x77e5f206cf18eac753a08aa2e9750949bafafe01", "0x2835921fc934cdb34bec2abd28dc9d1e56d0b7b2", "0xaa5177236377c659d292825dfe7b5427a37d58be", "0x62ddc0b1cee7aa243d429218519f1932cdd16114", "0x85f85a06dc53aa4b21552b3a0eec1cd6442a062c", "0x10508b593d350f6551b8906dd2abd9902edd5d0d", "0x7447c7b0f89eb84fe55c6eb09c36fb6850da6ec7", "0xf6fe68522baffee10302ccd0e6e85ee178b2cb74", "0xfba1291ad0615734503dacf8f16eecdd4e79d8ef", "0x44acb53375970ad801f0c3a9a8802d7920bc02a4", "0x44b6e76be517104f46715aa6f449350531fb29f0", "0x5d48f1a06df6d53e7b66dddcca48dff829341e39", "0x374802bb92d0e28f111f029447528a9c85d888d2", "0x2840fabbe1241649f9c609957dd60357871ed8c6", "0x87efb9c56ea05efbf748f5d6e112600123b41e5a", "0xaceb5937e4057139ca1deffe9eb726d9ae6000d4", "0xb4958c78a75034a3b88446cd097609e306523825", "0x852280538001a1e5e19cf25b5652c91b448b63bc"] }) {
+    id
+    nfts (orderBy: dateMinted) {
+      nftContract {
+        id
+        name
+        symbol
+      }
+      tokenId
+      tokenIPFSPath
+      dateMinted
+      isFirstSale 
+      nftHistory (orderBy: date, where: {event_in: [Bid, BuyPriceAccepted], date_gt: 1656993060, date_lte: 1656993240}) {
+        actorAccount {
+          id
+        }
+        event
+        date
+        amountInETH
+      }
+      lastSalePriceInETH
+    }
+  }
+}
+# Write your query or mutation here
+query test($start:Int, $end:Int){
+      creators(
+        where: {id_in: ["0xa3ffe0852407580a043e704d1767adfc6d7acc41", "0xa6616f91d6a6d554213ca3f11f87dc525ea82803", "0xa5ed4cb9f460e89303ff1bf8b11b20987a4a2f72", "0x18cafd72a2b1efa67c9dafa77aa874618b27e38e", "0x2da88c8a45f32f2f84d7c675512ab045b3673cf9", "0x60b6f16f8b52c2966420fb4a7f9d1b7fdb999518", "0xae6523e811edc6d16b806875fbf2082e01fb3117", "0x65a7e0554eba32df644805bf6bd463f6e7a37a77", "0xc9bb2cd8c473f012bc839fcab644ec9d9f8f4557", "0x28aa1bda95bd43e502bf96fa8fd560edc9bc3ac2", "0x612b194218cedbe38a418b79106e12dedd75e0cc", "0x752f004b6e8cb9ed62be55c964257d1955478ea1", "0x71feea315e5026c09db3e260cdaec14c3d990b75", "0x9fef6f79977d2fbc78227d914222e78bfa95c30c", "0xd3a846303e52d6b7f7e2605103cc1af1f503a949", "0x4b416807473bd926ef0f3ee77d383e908e39dc3a", "0x3f6e2f3380ad5b3187c513832d14b9517d87639e", "0x52fcde35b1bd070eecb2c60a730af8816e420b53", "0xfb7d7c678c6bfc03952d9c9c7427d3fb8d3142f9", "0xe23d6582b37818f0fdeb4dcdbb8e63e6b7dacb84", "0xa6c2bbc6d9b2039965efce4d4fcafb47c4069e6a", "0x4c5c59b023e8b1b3c5633bfb4c9e7cc2f796579d", "0x471100bd609ac6bdb33a7e5d636d07057b77111a", "0xafe82d46210ec8d2b580fde4ed088a4b73083d7e", "0xf88a9e0d5bd66984628aee7944858ed992dda586", "0xd2f223de67d69e0c576a3a5f8a300cb02e79941d", "0x64e44f61615e6662cd70f1e57ca57b08c6660591", "0xfde8604980e8db7d965c86028bbbf136b7836606", "0xd4849bec09de2ab271ef92df0b6e7faaabf07adf", "0x14a02abba072c026dfef8f7f5582fc3ff18bcad7"] }
+      	
+      ) {
+          id
+          nfts (orderBy: dateMinted) {
+          nftContract {
+              id
+              name
+              symbol
+          }
+          tokenId
+          tokenIPFSPath
+          dateMinted
+          nftHistory (orderBy: date, where: {
+              event_in: [Bid, BuyPriceAccepted], date_gt: $start, date_lte: $end
+          }) {
+              actorAccount {
+              id
+              }
+              event
+              date
+              amountInETH
+          }
+          lastSalePriceInETH
+          }
+      }
+  }
+
+/*
+nftHistory event in 3 min intervals
+id_in is array of wallet addresses, somehow i need note 
+  down which addresses have been queried recently
+
+orderBy: dateMinted may not be too necessary
+tokenIPFSPath-> what can i do with this again? Do i cache this in s3?
+  e.g. https://ipfs.io/ipfs/QmUuunAv5wz33KEMJuRowcnpcibJ7AME11qPxdDTw46G3K/metadata.json
+  quite slow, i feel like crawling FND direct :(
+
+0xfba1291ad0615734503dacf8f16eecdd4e79d8ef
+
+tokenId is within the collection
+collection is semi defined by nftContract.symbol(which isn't exact)
+
+collection name might change, 
+
+Kitsu
+https://etherscan.io/nft/0x1d46234D3e30Ac0956A2251884Eeb540e37512A1/7
+
+0xf742dcc971869092093019f13846f1aa6cfa93da
+ - can reverse index in search bar to get Jules
+
+Jules -> https://foundation.app/@collection/blanc666/6
+but tokenname if BLANC and 
+
+Feels like i need to ghetto this with selenium
+
+https://jr5ltvzcse-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.12.1)%3B%20Browser%20(lite)&x-algolia-api-key=1ae2d43a2816a05df9d1e053907048bc&x-algolia-application-id=JR5LTVZCSE
+
+{"requests":[{"indexName":"collections","query":"0xf742dcc971869092093019f13846f1aa6cfa93da","params":"hitsPerPage=3&facetFilters=%5B%22isHidden%3Afalse%22%2C%22isDeleted%3Afalse%22%5D"},{"indexName":"users","query":"0xf742dcc971869092093019f13846f1aa6cfa93da","params":"hitsPerPage=3&facetFilters=%5B%22moderationStatus%3AACTIVE%22%2C%22isHidden%3Afalse%22%5D"},{"indexName":"artworks","query":"0xf742dcc971869092093019f13846f1aa6cfa93da","params":"hitsPerPage=3&facetFilters=%5B%22moderationStatus%3AACTIVE%22%2C%22isDeleted%3Afalse%22%2C%22isHidden%3Afalse%22%5D"}]}
+https://etherscan.io/nft/0x4FB633bC9D4265c028FFF313a754f9cc47C7Bfc8/7 (jules also)
+
+Just ask for the goddamn address and profile
+
+*/
+
+/*
+Minute delay if they ever received a bid
+
+
+0xaddr -> {
+  username: str (@rofortyseven),
+  name: str ろ47
+}
+
+
+*/
+/*
+Below query is for bazaar previously
+Difference between both queries is the event in 
+*/
+{
+  creators(where: {id_in: ["0x45b5b5182be548f4b4d935b754354e0ad7baea29"] }) {
+    id
+    nfts (orderBy: dateMinted) {
+      nftContract {
+        id
+        name
+        symbol
+      }
+      tokenId
+      tokenIPFSPath
+      dateMinted
+      isFirstSale
+      nftHistory (orderBy: date, where: {event_in: ["Minted", "Listed", "PriceChanged", "Unlisted", "BuyPriceSet"], date_gt: 1656997380, date_lte: 1656997560}) {
+        actorAccount {
+          id
+        }
+        event
+        date
+        amountInETH
+      }
+      lastSalePriceInETH
+    }
+  }
+}

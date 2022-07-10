@@ -1,0 +1,3 @@
+*** CMDS ***
+
+nohup sudo node index.js > output.log &
